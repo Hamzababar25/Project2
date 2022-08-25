@@ -1,17 +1,30 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
+import { StringSchemaDefinition } from "mongoose";
 import { Userd, } from "./userd.schema";
 import { UserDService } from "./userd.service";
 
 export class CreateUserdDto {
-    name: string;
-    email: number;
+    phonenumber: number;
+    address: string;
+
+    fname:string;
+lname:string;
+dob:string;
+location:{
+  lat:string;
+  long:string;
+};
+
     
+    
+
+
     userdss: Userd;
    
   
   }
 
-  @Controller('User')
+  @Controller('Userd')
 export class UserdController {
     constructor(private readonly userdService: UserDService) {}
 

@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
+import { type } from 'os';
 import { User } from 'src/user/user.schema';
 
 export type UserdDocument = Userd & Document;
@@ -10,7 +11,7 @@ export class Userd {
   userdss: User;
 
   @Prop()
-  phonenumber: any;
+  phonenumber: number;
 
   @Prop()
 address: string;
@@ -20,8 +21,11 @@ fname: string;
 lname: string;
 @Prop()
 dob: string;
-@Prop()
-location: any;
+@Prop({type:mongoose.Schema.Types.Mixed})
+location:{
+  lat:string,
+  long:string
+}
 
   
 }

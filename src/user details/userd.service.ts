@@ -27,9 +27,9 @@ export class UserDService {
           .exec();
         return deleteduserd;
       }
-      async update({id,email,password}) {
+      async update({id,phonenumber,address,fname,lname,dob,location}) {
         const updateuserd = await this.userdModel
-          .findByIdAndUpdate(id,{ email,password })
+          .findByIdAndUpdate(id,{ phonenumber,address,fname,lname,dob,location })
           .exec();
         return await this.findOne(updateuserd._id);
       }

@@ -1,12 +1,14 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
+import { Body, ConflictException, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
+import { Userd } from "src/user details/userd.schema";
 import { User } from "./user.schema";
 import { UserService } from "./user.service";
 
 export class CreateUserDto {
-    name: string;
-    email: number;
     
-    userdss: User;
+    email: string;
+    password:string;
+    
+    userddss: Userd;
    
   
   }
@@ -17,7 +19,11 @@ export class UserController {
 
     @Post()
 async create(@Body() createusertDto: CreateUserDto) {
-   return this.userService.createuser(createusertDto)
+   try{return this.userService.createuser(createusertDto)}
+   catch(e)
+   {
+    throw new ConflictException()
+   }
 
 }
 @Get()
